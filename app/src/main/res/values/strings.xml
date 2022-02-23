@@ -5,4 +5,8 @@
     <string name="play_async">Play async</string>
     <string name="prepare">Prepare</string>
     <string name="play">Play</string>
+    <string name="prepare_play_sync">Prepare and play synchronously</string>
+    <string name="prepare_play_two_steps">Prepare and play in two steps</string>
+    <string name="prepare_play_async">Prepare and play asynchronously</string>
+    <string name="stop_current_player">Stop current player</string>
 </resources>

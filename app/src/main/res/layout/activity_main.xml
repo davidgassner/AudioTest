@@ -12,51 +12,73 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/prep_and_play"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/prepareButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView1"
+        style="@style/description_text"
+        android:text="@string/prepare_play_sync"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prepAndPlayButton" />
 
     <Button
         android:id="@+id/prepareButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/button_vertical_margin"
         android:text="@string/prepare"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/playButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/prepAndPlayButton" />
-
+        app:layout_constraintStart_toStartOf="@+id/prepAndPlayButton"
+        app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
     <Button
         android:id="@+id/playButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:enabled="false"
         android:text="@string/play"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/asyncButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/prepareButton" />
+        app:layout_constraintBottom_toBottomOf="@+id/prepareButton"
+        app:layout_constraintStart_toEndOf="@+id/prepareButton"
+        app:layout_constraintTop_toTopOf="@+id/prepareButton" />
+
+    <TextView
+        android:id="@+id/textView2"
+        style="@style/description_text"
+        android:text="@string/prepare_play_two_steps"
+        app:layout_constraintStart_toStartOf="@+id/prepareButton"
+        app:layout_constraintTop_toBottomOf="@+id/prepareButton" />
 
     <Button
         android:id="@+id/asyncButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/button_vertical_margin"
         android:text="@string/play_async"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/stopButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/playButton" />
+        app:layout_constraintStart_toStartOf="@+id/prepareButton"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView3"
+        style="@style/description_text"
+        android:text="@string/prepare_play_async"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/asyncButton" />
 
     <Button
         android:id="@+id/stopButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/button_vertical_margin"
         android:text="@string/stop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/asyncButton" />
+        app:layout_constraintStart_toStartOf="@+id/asyncButton"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
+    <TextView
+        android:id="@+id/textView4"
+        style="@style/description_text"
+        android:text="@string/stop_current_player"
+        app:layout_constraintTop_toBottomOf="@+id/stopButton"
+        app:layout_constraintStart_toStartOf="@+id/stopButton"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

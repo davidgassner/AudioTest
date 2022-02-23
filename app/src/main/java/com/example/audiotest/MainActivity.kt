@@ -14,7 +14,7 @@ const val AUDIO_FILE_NAME = "root-cellar-blues.wav"
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var cachedAudioFile: File
+    private lateinit var cachedFilePath: String
     private var player: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,18 +39,19 @@ class MainActivity : AppCompatActivity() {
     private fun prepareAndPlay() {
         stopPlayer()
         player = MediaPlayer().also {
-            it.setDataSource(cachedAudioFile.absolutePath)
+            it.setDataSource(cachedFilePath)
             it.prepare()
             it.start()
         }
     }
 
-    private fun preparePlayer(){
+    private fun preparePlayer() {
         stopPlayer()
         player = MediaPlayer().also {
-            it.setDataSource(cachedAudioFile.absolutePath)
+            it.setDataSource(cachedFilePath)
             it.prepare()
         }
+        binding.playButton.isEnabled = true
         Toast.makeText(this, "Prepared", Toast.LENGTH_SHORT).show()
     }
 
@@ -58,11 +59,10 @@ class MainActivity : AppCompatActivity() {
         player?.start()
     }
 
-
     private fun prepareAsyncAndPlay() {
         stopPlayer()
         player = MediaPlayer().also {
-            it.setDataSource(cachedAudioFile.absolutePath)
+            it.setDataSource(cachedFilePath)
             it.setOnPreparedListener { player ->
                 player.start()
             }
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun copyAudioFileToCache() {
-        cachedAudioFile = File(cacheDir, AUDIO_FILE_NAME)
+        val cachedAudioFile = File(cacheDir, AUDIO_FILE_NAME)
         try {
             assets.open(AUDIO_FILE_NAME).use { inputStream ->
                 FileOutputStream(cachedAudioFile).use { outputStream ->
@@ -91,6 +91,7 @@ class MainActivity : AppCompatActivity() {
                 this,
                 "File copied to: ${cachedAudioFile.absolutePath}", Toast.LENGTH_SHORT
             ).show()
+            cachedFilePath = cachedAudioFile.absolutePath
         } catch (e: IOException) {
             Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
         }
