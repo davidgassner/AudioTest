@@ -29,9 +29,11 @@ class MainActivity : AppCompatActivity() {
     private fun initEvents() {
         binding.apply {
             prepAndPlayButton.setOnClickListener { prepareAndPlay() }
+            prepareButton.setOnClickListener { preparePlayer() }
+            playButton.setOnClickListener { play() }
+            asyncButton.setOnClickListener { prepareAsyncAndPlay() }
             stopButton.setOnClickListener { stopPlayer() }
         }
-
     }
 
     private fun prepareAndPlay() {
@@ -39,6 +41,32 @@ class MainActivity : AppCompatActivity() {
         player = MediaPlayer().also {
             it.setDataSource(cachedAudioFile.absolutePath)
             it.prepare()
+            it.start()
+        }
+    }
+
+    private fun preparePlayer(){
+        stopPlayer()
+        player = MediaPlayer().also {
+            it.setDataSource(cachedAudioFile.absolutePath)
+            it.prepare()
+        }
+        Toast.makeText(this, "Prepared", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun play() {
+        player?.start()
+    }
+
+
+    private fun prepareAsyncAndPlay() {
+        stopPlayer()
+        player = MediaPlayer().also {
+            it.setDataSource(cachedAudioFile.absolutePath)
+            it.setOnPreparedListener { player ->
+                player.start()
+            }
+            it.prepareAsync()
             it.start()
         }
     }

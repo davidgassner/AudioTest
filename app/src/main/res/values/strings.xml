@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Audio Test</string>
-    <string name="prep_and_play">prep and play</string>
+    <string name="prep_and_play">Prep and Play</string>
     <string name="stop">Stop</string>
+    <string name="play_async">Play async</string>
+    <string name="prepare">Prepare</string>
+    <string name="play">Play</string>
 </resources>
