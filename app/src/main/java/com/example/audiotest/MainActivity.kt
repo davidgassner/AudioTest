@@ -77,6 +77,7 @@ class MainActivity : AppCompatActivity() {
             it.reset()
         }
         player = null
+        binding.playButton.isEnabled = false
     }
 
     private fun copyAudioFileToCache() {
