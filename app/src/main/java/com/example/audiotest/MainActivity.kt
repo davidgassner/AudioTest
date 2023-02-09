@@ -67,7 +67,6 @@ class MainActivity : AppCompatActivity() {
                 player.start()
             }
             it.prepareAsync()
-            it.start()
         }
     }
 
@@ -75,6 +74,7 @@ class MainActivity : AppCompatActivity() {
         player?.let {
             it.stop()
             it.reset()
+            it.release()
         }
         player = null
         binding.playButton.isEnabled = false
